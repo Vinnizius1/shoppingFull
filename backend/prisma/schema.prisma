@@ -4,7 +4,7 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 
-// schema.prisma é o modelo de banco de dados
+// schema.prisma é o modelo de banco de dados -- FOCADO EM MODELOS, pois toda a configuração agora fica em prisma.config.ts
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
