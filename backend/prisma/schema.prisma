@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
-
 // schema.prisma é o modelo de banco de dados -- FOCADO EM MODELOS, pois toda a configuração agora fica em prisma.config.ts
 generator client {
   provider = "prisma-client"
@@ -12,4 +6,21 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+// Primeiro modelo, o User
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Role é um enum para definir os tipos de usuários
+enum Role {
+  CUSTOMER
+  ADMIN
 }
